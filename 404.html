@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — YourBrand</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .not-found {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+    }
+    .not-found-code {
+      font-size: clamp(5rem, 20vw, 9rem);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .not-found h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .not-found p {
+      color: var(--color-text-muted);
+      max-width: 400px;
+      margin: 0 auto 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="not-found">
+    <div class="not-found-code">404</div>
+    <h2>Page Not Found</h2>
+    <p>Sorry, we couldn't find the page you were looking for. It may have been moved or deleted.</p>
+    <a href="index.html" class="btn btn-primary">Back to Home</a>
+  </div>
+</body>
+</html>
