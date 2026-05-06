@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company Name</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">YourBrand</a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>We Help Small Businesses <span class="accent">Grow</span></h1>
+      <p>Professional services tailored to your needs. Fast, reliable, and built to last.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+        <a href="#services" class="btn btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about section" id="about">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>We're a small team passionate about helping local businesses succeed. With years of experience and a commitment to quality, we deliver results you can count on.</p>
+        <ul class="about-list">
+          <li>&#10003; Locally owned &amp; operated</li>
+          <li>&#10003; 100+ happy clients</li>
+          <li>&#10003; Fast turnaround times</li>
+          <li>&#10003; Satisfaction guaranteed</li>
+        </ul>
+      </div>
+      <div class="about-image">
+        <div class="image-placeholder">Photo / Illustration</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services section" id="services">
+    <div class="container">
+      <h2 class="section-title">What We Offer</h2>
+      <div class="services-grid">
+
+        <div class="card">
+          <div class="card-icon">&#128187;</div>
+          <h3>Service One</h3>
+          <p>Short description of this service and the value it brings to your clients.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">&#128200;</div>
+          <h3>Service Two</h3>
+          <p>Short description of this service and the value it brings to your clients.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">&#128101;</div>
+          <h3>Service Three</h3>
+          <p>Short description of this service and the value it brings to your clients.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">&#128204;</div>
+          <h3>Service Four</h3>
+          <p>Short description of this service and the value it brings to your clients.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials section" id="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Clients Say</h2>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <p>"Working with this team was a great experience. They delivered exactly what we needed on time and within budget."</p>
+          <div class="testimonial-author">
+            <div class="avatar">JD</div>
+            <div>
+              <strong>Jane Doe</strong>
+              <span>Owner, Doe's Bakery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"Professional, responsive, and genuinely cared about our business. Highly recommend to anyone looking for quality service."</p>
+          <div class="testimonial-author">
+            <div class="avatar">MS</div>
+            <div>
+              <strong>Mike Smith</strong>
+              <span>CEO, Smith Auto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"They transformed our online presence completely. We've seen a noticeable increase in new customers since working with them."</p>
+          <div class="testimonial-author">
+            <div class="avatar">AL</div>
+            <div>
+              <strong>Amy Lee</strong>
+              <span>Manager, Lee Fitness</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Ready to get started? Fill out the form and we'll be in touch within 24 hours.</p>
+        <ul class="contact-details">
+          <li>&#128205; 123 Main St, Your City, ST 00000</li>
+          <li>&#128222; (555) 000-0000</li>
+          <li>&#9993;&#65039; hello@yourbrand.com</li>
+        </ul>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="subject" placeholder="Subject" />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-success" id="form-success">Thanks! We'll be in touch soon.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 YourBrand. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
