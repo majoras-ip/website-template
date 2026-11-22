@@ -71,17 +71,19 @@ To check mobile layout with headless Chrome, render the page inside a 390px-wide
 - **`404.html`**: branded error page with the call bar.
 - **`favicon.svg`**: brand-color square with the client's initial.
 
-Design decisions to keep:
-- Services are a ruled two-column list, not icon cards.
+The layout above is the template's starting point, not a look every client shares. **Every client site must look different from the others**, including two clients in the same trade: `/new-client` plans each site's palette, type, shape, top bar, nav, hero, content layout and footer against `.claude/style-ledger.md`, and rebuilds the sections in that shape.
+
+Decisions that hold on every trades site, whatever its look:
 - Only the "How a job works" steps are numbered, because they're a real sequence. Don't number other content.
-- The credentials row in the hero (license, insurance, years in business, free estimates) is the one bold element. Keep the rest of the page quiet.
-- The FAQ uses native `<details>`/`<summary>` and needs no JS.
+- The credentials (license, insurance, years in business, free estimates) are the one bold element near the top. How they're shown can change; keep the rest of the page quiet.
+- The FAQ uses native `<details>`/`<summary>` and needs no JS. Its styling can change.
+- No icon-card grids for services.
 
 ## Customizing for a client
 
 **Rebrand**
 1. Replace every `YourBrand` in `index.html` and `404.html`, including `<title>`, meta tags, and JSON-LD.
-2. Copy the matching trade preset (electrician, roofer, landscaper) from `styles.css` into `:root`, or set `--brand` to the client's truck or logo color. Update `theme-color` in both HTML files and the `fill` in `favicon.svg`.
+2. Set `--brand` to the client's truck or logo color, or pick a color that clears the style ledger (the trade presets in `styles.css` are only hints). Update `theme-color` in both HTML files and the `fill` in `favicon.svg`.
 3. Change the JSON-LD `@type` to match the trade: `Electrician`, `RoofingContractor`, or `LandscapingBusiness` (or the generic `HomeAndConstructionBusiness`).
 
 **Content**

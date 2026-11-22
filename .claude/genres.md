@@ -2,6 +2,8 @@
 
 `/new-client` reads this file to decide how a site should look, move and be organized for each kind of business. Add a genre by copying the blank entry at the bottom.
 
+Each entry's **Style** is a starting direction, not a fixed look, and its **Sections** list is what the page must include, not a fixed order (the top bar comes first and the primary action closes the page). Two sites in the same genre must still look different: `/new-client` checks every site against `.claude/style-ledger.md`.
+
 Pick the entry whose **Matches** list fits the business type best. Business types often have several names ("barbershop", "barber", "men's grooming"), so use judgment. If nothing fits, invent a new entry in the same shape (see "When nothing matches" at the end).
 
 ---
