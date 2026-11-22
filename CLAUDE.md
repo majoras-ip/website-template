@@ -12,26 +12,31 @@ The site has one job: **get a homeowner to call.** Most visitors are on a phone,
 
 These rules are fixed. Follow them on every new client site unless the user explicitly says otherwise.
 
+The template is built for **trades** (electricians, roofers, landscapers). `/new-client` also builds sites for other kinds of business (barbers, coffee shops, gyms, bands and so on) using the genre library in `.claude/genres.md` and the scroll-craft skill. Those **genre sites** follow every rule below except where a rule is marked *Trades only*, and use the genre library's motion and top-bar rules instead.
+
 **Stack**
 - Plain HTML, CSS and JS only. No build step, framework, package manager, Tailwind, or bundler.
-- The only external scripts allowed are GSAP and ScrollTrigger from cdnjs, pinned to an exact version (currently 3.12.5) and loaded with `defer`. Don't add other libraries.
+- *Trades only:* the only external scripts allowed are GSAP and ScrollTrigger from cdnjs, pinned to an exact version (currently 3.12.5) and loaded with `defer`. Don't add other libraries.
+- Genre sites use the scroll-craft engine (`scrollcraft.js` and `scrollcraft.css`, copied locally and never edited) instead of GSAP. Never load both.
 - Google Fonts is the only external stylesheet. Load at most two families and only the weights you use, with `display=swap`.
 
 **Phone number / click-to-call**
-- The sticky amber `.call-bar` at the very top of every page (including 404) is required. It links with `href="tel:+1XXXXXXXXXX"` (E.164 format) and shows the formatted number in large type.
-- Repeat the click-to-call button in the hero and next to the estimate form.
-- `--signal` (the amber) is used **only** for call buttons, so it always means "call."
+- Genre sites keep a sticky top bar on every page too, but its action follows the genre (book, order, directions, shows), with a `tel:` link beside it when there's a phone number. `--signal` is reserved for that action.
+- *Trades only:* the sticky amber `.call-bar` at the very top of every page (including 404) is required. It links with `href="tel:+1XXXXXXXXXX"` (E.164 format) and shows the formatted number in large type.
+- *Trades only:* repeat the click-to-call button in the hero and next to the estimate form.
+- *Trades only:* `--signal` (the amber) is used **only** for call buttons, so it always means "call."
 - When the number changes, update every `tel:` link, the displayed text, and the `telephone` field in the JSON-LD. Search for `555` to find them all.
 
 **Animation**
-- Subtle fade-ins on sections only: add `data-reveal` to a section's inner `.container`. `script.js` fades each one up 24px over 0.7s, once.
-- Don't animate the hero or header. They're above the fold, and animating them causes a flash on load.
-- Nothing flashy: no parallax, pinning, scroll-scrubbing, text splitting, counters, or hover effects on every card.
-- Animations must be skipped under `prefers-reduced-motion` (handled by `gsap.matchMedia`). Content must stay fully visible if GSAP fails to load, so never hide elements in CSS waiting for JS.
+- Genre sites get one signature moment as described in `.claude/genres.md`. The rest of the page stays quiet. The last rule below (reduced motion, content visible without JS) applies to every site.
+- *Trades only:* subtle fade-ins on sections only: add `data-reveal` to a section's inner `.container`. `script.js` fades each one up 24px over 0.7s, once.
+- *Trades only:* don't animate the hero or header. They're above the fold, and animating them causes a flash on load.
+- *Trades only:* nothing flashy: no parallax, pinning, scroll-scrubbing, text splitting, counters, or hover effects on every card.
+- Animations must be skipped under `prefers-reduced-motion` (handled by `gsap.matchMedia` on trades sites and by the engine plus your own checks on genre sites). Content must stay fully visible if scripts fail to load. Trades sites never hide elements in CSS while waiting for JS. Genre sites use the `sc-ready` fallback described in `.claude/genres.md`.
 
 **Performance**
 - Images: compressed JPG/WebP, roughly 1600px wide at most, with `width`/`height` attributes set. Use `loading="lazy"` on everything below the hero.
-- No video backgrounds, sliders, carousels, or icon fonts. Use inline SVG for icons.
+- No video backgrounds, auto-advancing sliders or carousels, or icon fonts. A swipeable or scroll-driven row on a genre site is fine. Use inline SVG for icons.
 - Load scripts at the end of `<body>` with `defer`.
 
 **Mobile**
