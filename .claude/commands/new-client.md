@@ -37,7 +37,7 @@ How scroll-craft is adapted for client sites (these override the skill's default
 - **Its fingerprint gate is replaced by the style ledger**, which covers the same structural ground plus the visual details (top bar, nav, hero, footer, type, color) that made earlier sites look alike. Don't use the workspace's `FINGERPRINTS.md`.
 - Its hard rules all apply (no visible em dashes, no scroll cues, no section counters on content that isn't a sequence, no counters without real numbers, no gradient text), except where they conflict with mine.
 
-The svg-animation, accessible-animation and 60fps-animation skills are installed too. Load them when the signature moment needs SVG drawing, reduced-motion tiers or performance help.
+The svg-animation, accessible-animation and 60fps-animation skills are installed too. Load them when the signature moment needs SVG drawing, reduced-motion tiers or performance help. Load the **animate** skill when you write the signature moment or any other motion, so it's built to pass the animation review in step 9 the first time.
 
 ## 0. Check the input before building anything
 
@@ -56,7 +56,7 @@ Stop and ask me, and build nothing yet, if:
 - Folder name: the business name in kebab-case. Lowercase it, drop apostrophes, turn `&` into `and`, replace every other run of non-alphanumeric characters with one hyphen, and trim hyphens from the ends. `Mike's Roofing` → `mikes-roofing`, `A&B Lawn Care` → `a-and-b-lawn-care`.
 - Create it next to this repo: `../<folder-name>`.
 - Copy with `rsync -a --exclude .git --exclude .claude ./ ../<folder-name>/`. This keeps `.github/` (the Pages deploy workflow) and `CLAUDE.md`, and leaves out this repo's git history, the slash command and the genre library.
-- **Never edit any file in the template repo**, with one exception: appending this site's row to `.claude/style-ledger.md` at the end (step 10). Every other edit happens inside `../<folder-name>/`. Before each edit, check the path.
+- **Never edit any file in the template repo**, with one exception: appending this site's row to `.claude/style-ledger.md` at the end (step 11). Every other edit happens inside `../<folder-name>/`. Before each edit, check the path.
 
 ## 2. Pick the genre
 
@@ -174,7 +174,23 @@ Then continue at step 6.
 
 The copied `CLAUDE.md` describes a trades site. Rewrite its Overview, Architecture and "Design decisions to keep" sections to describe this client: the genre, the primary action, the section order, and the signature moment (what it is, where its code lives, and its reduced-motion and mobile fallbacks), so a later session doesn't "fix" it back to the trades setup. Leave the trades-specific "Customizing for a client" steps out.
 
-## 9. Check your work, then git
+## 9. Review the animations, and fix what it flags
+
+Every site gets this, on both paths, after it's built and before the checks in step 10.
+
+- The **review-animations** skill can only be started by me with a slash command, so don't call it with the Skill tool. Read `~/.claude/skills/review-animations/SKILL.md` and `STANDARDS.md` and run its review yourself, exactly as it describes. Skip its "Initial Response" greeting.
+- **Scope:** every animation and transition in the client folder: `styles.css` (transitions, keyframes, hover states), `script.js` (the signature moment, the menu, any other JS motion), inline styles in the HTML, and how the site uses the engine (`data-sc-*` attributes and any timing overrides). Don't review the engine files' own code.
+- Write its findings table and verdict (Block or Approve), citing `file:line`, to `~/.claude/scroll-craft-lab/builds/<folder-name>/animation-review.md`.
+- **Fix every finding** in the order its remedial hierarchy gives, then run the review again. Repeat until the verdict is Approve, for at most three rounds. If something still flags after that, or a fix would break one of my rules, leave it and explain why in the summary.
+- **What outranks the review:** my rules and the genre library.
+  - It can tune the signature moment (easing, duration, interruptibility, reduced motion, GPU properties) but not delete it. If it says to delete the signature moment, reduce it instead and note the disagreement in the summary.
+  - Scroll-linked motion is paced by the reader's scroll, so the 300ms UI budget applies to UI transitions (buttons, menu, FAQ, hovers), not to scroll-driven devices.
+  - Quiet section fade-ins are allowed by my rules; the review can shorten or retime them.
+  - Never edit the scroll-craft engine files. To change the engine's timing, override it in `styles.css`.
+  - Trades sites keep their quiet fades. Don't add motion while fixing.
+- The step 10 screenshots and harness run after this, so they confirm the fixes didn't break anything.
+
+## 10. Check your work, then git
 
 - Serve the folder (`python3 -m http.server <port>`, run from the client folder).
 - Run scroll-craft's harness (all sites) from `~/.claude/scroll-craft-lab`, writing into `builds/<folder-name>/`:
@@ -193,11 +209,11 @@ The copied `CLAUDE.md` describes a trades site. Rewrite its Overview, Architectu
 - In `../<folder-name>/`, run `git init -b main`, then `git add -A`, then commit with the message `Initial site for <Business Name>`. If git has no `user.name`/`user.email` configured, reuse the author of the template repo's latest commit (`git -C <template path> log -1 --format='%an|%ae'`) via `git -c user.name=... -c user.email=...` for this commit only. Don't change the global git config.
 - Don't create a GitHub repo and don't push.
 
-## 10. Finish with a checklist
+## 11. Finish with a checklist
 
 Append this site's row to `.claude/style-ledger.md` in the template repo (all sites), and update its "currently taken by streak" list for the last two rows. Commit that one file in the template repo with the message `Add <folder-name> to the style ledger`. Don't push.
 
-Print a short summary first: the folder path, the genre used, the page grammar, the color and type choices and why, the signature moment and how it degrades on phones and under reduced motion, the look plan and its ledger check, what the harness checked and anything it couldn't (a real phone), and any assumptions (e.g. the state you picked, the nearby towns). If you invented a genre, print its entry for `genres.md`. Then print this checklist, filled in for this client, dropping lines that don't apply and adding genre-specific ones (menu and prices, booking link, show dates, class schedule, artist bios, and so on):
+Print a short summary first: the folder path, the genre used, the page grammar, the color and type choices and why, the signature moment and how it degrades on phones and under reduced motion, the look plan and its ledger check, the animation review's verdict and what it made you fix, what the harness checked and anything it couldn't (a real phone), and any assumptions (e.g. the state you picked, the nearby towns). If you invented a genre, print its entry for `genres.md`. Then print this checklist, filled in for this client, dropping lines that don't apply and adding genre-specific ones (menu and prices, booking link, show dates, class schedule, artist bios, and so on):
 
 **Still needed before launch**
 - [ ] Owner photos for the hero and every placeholder, with the town or subject for each
