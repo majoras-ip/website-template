@@ -534,6 +534,13 @@ address a { color: var(--ink); font-weight: 600; }
   .credentials dd { font-size: 1.5rem; }
 }
 
+/* Lenis smooth scrolling (from lenis/dist/lenis.css 1.3.27, inlined so Google
+   Fonts stays the only external stylesheet). Only applies while Lenis runs. */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }

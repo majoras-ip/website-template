@@ -16,8 +16,8 @@ The template is built for **trades** (electricians, roofers, landscapers). `/new
 
 **Stack**
 - Plain HTML, CSS and JS only. No build step, framework, package manager, Tailwind, or bundler.
-- *Trades only:* the only external scripts allowed are GSAP and ScrollTrigger from cdnjs, pinned to an exact version (currently 3.12.5) and loaded with `defer`. Don't add other libraries.
-- Genre sites use the scroll-craft engine (`scrollcraft.js` and `scrollcraft.css`, copied locally and never edited) instead of GSAP. Never load both.
+- *Trades only:* the only external scripts allowed are GSAP and ScrollTrigger from cdnjs (pinned, currently 3.12.5) and Lenis from jsDelivr (pinned, currently 1.3.27; it isn't on cdnjs), all loaded with `defer`. Don't add other libraries.
+- Genre sites use the scroll-craft engine (`scrollcraft.js` and `scrollcraft.css`, copied locally and never edited) instead of GSAP, plus Lenis from jsDelivr. Never load GSAP and the engine together.
 - Google Fonts is the only external stylesheet. Load at most two families and only the weights you use, with `display=swap`.
 
 **Phone number / click-to-call**
@@ -32,6 +32,7 @@ The template is built for **trades** (electricians, roofers, landscapers). `/new
 - *Trades only:* subtle fade-ins on sections only: add `data-reveal` to a section's inner `.container`. `script.js` fades each one up 24px over 0.7s, once.
 - *Trades only:* don't animate the hero or header. They're above the fold, and animating them causes a flash on load.
 - *Trades only:* nothing flashy: no parallax, pinning, scroll-scrubbing, text splitting, counters, or hover effects on every card.
+- **Smooth scrolling (every site): Lenis**, kept subtle (`lerp: 0.14`). Wheel and trackpad only: touch scrolling stays native (`syncTouch: false`), and so does keyboard scrolling. It's off under `prefers-reduced-motion`, including if the setting changes mid-visit, and the page scrolls natively if Lenis fails to load. On trades sites it's driven by GSAP's ticker and calls `ScrollTrigger.update` on every scroll so reveals stay in time; on genre sites it runs with `autoRaf` and the engine reads the smoothed scroll. Skip it on any page with scroll-scrubbed video or image sequences, because the engine already smooths those. Anchor links use `anchors: true`, and Lenis lands them using `scroll-padding-top`, so keep that set to the sticky bar's height plus a little. Put `data-lenis-prevent` on any inner element that scrolls by itself (a long open menu panel, a modal). The 404 page doesn't load it.
 - Animations must be skipped under `prefers-reduced-motion` (handled by `gsap.matchMedia` on trades sites and by the engine plus your own checks on genre sites). Content must stay fully visible if scripts fail to load. Trades sites never hide elements in CSS while waiting for JS. Genre sites use the `sc-ready` fallback described in `.claude/genres.md`.
 
 **Performance**
@@ -67,7 +68,7 @@ To check mobile layout with headless Chrome, render the page inside a 390px-wide
 
 - **`index.html`**: sections in order: call bar → masthead (nav + hero + credentials row) → services → how a job works → recent jobs → reviews → service area + hours + map → FAQ → estimate form → footer. Includes `LocalBusiness` JSON-LD in `<head>`.
 - **`styles.css`**: theme tokens in `:root` at the top, with commented trade presets below them. Uses Barlow Condensed for headlines and Barlow for body text.
-- **`script.js`**: mobile menu toggle, demo form handler, footer year, and GSAP section reveals.
+- **`script.js`**: mobile menu toggle, demo form handler, footer year, GSAP section reveals, and Lenis smooth scrolling synced with ScrollTrigger.
 - **`404.html`**: branded error page with the call bar.
 - **`favicon.svg`**: brand-color square with the client's initial.
 

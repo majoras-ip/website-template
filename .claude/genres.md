@@ -14,7 +14,21 @@ These come from the template's `CLAUDE.md` and never change per genre.
 
 **Stack.** Plain HTML, CSS and JS, no build step and no package manager in the client folder. At most two Google Font families. No video backgrounds, no icon fonts, no other libraries.
 - **Genre sites** use the scroll-craft engine: copy `~/.claude/skills/scroll-craft/engine/scrollcraft.js` and `scrollcraft.css` into the client folder unmodified, and remove the template's GSAP `<script>` tags (never load both). Drive motion with the engine's `data-sc-*` attributes, and write the signature moment as page JS in `script.js` reading the act's `--sc-p` progress. Where an entry below says "scrub", "pin" or "parallax", it means the engine's acts and devices (`data-sc-act`, `data-sc-parallax`, `data-sc-pan`, `data-sc-reveal`, `data-sc-in`).
-- **Trades and the dentist / medical entry** (and other trust-first professions) keep the template's GSAP + ScrollTrigger 3.12.5 setup and its quiet section fades. No engine.
+- **Trades and the dentist / medical entry** (and other trust-first professions) keep the template's GSAP + ScrollTrigger 3.12.5 setup and its quiet section fades, with Lenis synced to ScrollTrigger exactly as the template's `script.js` does it. No engine.
+- **Smooth scrolling on genre sites:** load Lenis 1.3.27 from jsDelivr (`<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js" defer></script>`) before `scrollcraft.js`, keep the template's inlined Lenis CSS in `styles.css`, and start it in `script.js` before `ScrollCraft.mount()`:
+  ```js
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let lenis = null;
+  function startLenis() {
+    if (lenis || !window.Lenis || reduceMotion.matches) return;
+    if (document.querySelector('video[data-sc-scrub], canvas[data-sc-sequence]')) return; // engine already smooths these
+    lenis = new Lenis({ lerp: 0.14, smoothWheel: true, syncTouch: false, anchors: true, stopInertiaOnNavigate: true, autoRaf: true });
+  }
+  function stopLenis() { if (lenis) { lenis.destroy(); lenis = null; } }
+  startLenis();
+  reduceMotion.addEventListener('change', () => (reduceMotion.matches ? stopLenis() : startLenis()));
+  ```
+  It works with the engine because Lenis moves the real scroll position (sticky pinning, `pan`, `--sc-p` and scroll listeners all keep working). Don't add GSAP to get it.
 
 **One signature moment, one peak.** Each site gets exactly one loud, memorable animated element, chosen from its genre below. In scroll-craft terms it's the page's peak and the site's signature move. Other sections stay quieter: plain flow sections with a fade-in on entry (`data-sc-in`), plus at most two light devices elsewhere (a `reveal` wipe on a gallery, a `pan` row, a gentle `parallax` layer), never the same device twice in a row. If a genre's ideas list more than one moment, pick one.
 

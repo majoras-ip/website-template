@@ -137,7 +137,7 @@ Load the scroll-craft and frontend-design skills and use them for this whole ste
 - Include the look plan from step 2 and its ledger check in `BRIEF.md`. That replaces scroll-craft's fingerprint gate.
 
 **Then build:**
-- **Engine:** copy `~/.claude/skills/scroll-craft/engine/scrollcraft.js` and `scrollcraft.css` into the client folder unmodified, and link them in place of the template's GSAP scripts (`scrollcraft.css` before `styles.css`, `scrollcraft.js` deferred before `script.js`). Map the engine's `--sc-*` tokens to the site's own tokens in `styles.css`. Remove the template's GSAP reveal code from `script.js` and use `data-sc-in` for quiet section reveals. Add the `sc-ready` fallback rule and the `ScrollCraft.mount` call from the library's motion safety rules.
+- **Engine:** copy `~/.claude/skills/scroll-craft/engine/scrollcraft.js` and `scrollcraft.css` into the client folder unmodified, and link them in place of the template's GSAP scripts (`scrollcraft.css` before `styles.css`, `scrollcraft.js` deferred before `script.js`). Map the engine's `--sc-*` tokens to the site's own tokens in `styles.css`. Remove the template's GSAP reveal code and its GSAP-synced Lenis block from `script.js`, use `data-sc-in` for quiet section reveals, and set up Lenis the engine way, as "Smooth scrolling on genre sites" in the library shows (jsDelivr script before `scrollcraft.js`, `autoRaf`, started before mount). Add the `sc-ready` fallback rule and the `ScrollCraft.mount` call from the library's motion safety rules.
 
 - **Sections:** rebuild `index.html` with the genre entry's **Sections** list. The top bar comes first and the primary action closes the page; the order in between can change if the journey reads better. Remove template sections that don't belong (e.g. "How a job works" and the credentials row for a coffee shop) along with their CSS and nav links. Lay each section out the way your look plan says, not the way the last site did.
 - **Top bar:** keep the sticky bar at the very top of every page, including 404, with the genre's **Primary action** in `--signal`. Rename `.call-bar` only if it no longer calls; keep it big, tappable (at least 52px tall on phones) and always visible. Repeat the primary action in the hero and in the final contact or booking section.
@@ -188,6 +188,7 @@ Every site gets this, on both paths, after it's built and before the checks in s
   - Quiet section fade-ins are allowed by my rules; the review can shorten or retime them.
   - Never edit the scroll-craft engine files. To change the engine's timing, override it in `styles.css`.
   - Trades sites keep their quiet fades. Don't add motion while fixing.
+  - Lenis smooth scrolling is part of my rules: the review can tune its `lerp` but not remove it.
 - The step 10 screenshots and harness run after this, so they confirm the fixes didn't break anything.
 
 ## 10. Check your work, then git
@@ -203,6 +204,7 @@ Every site gets this, on both paths, after it's built and before the checks in s
 - For a scroll-driven signature moment, also take a viewport-sized screenshot partway down the page with motion on, to confirm it actually moves.
 - Fix anything broken: overflow, leftover template text, broken anchors, invisible content, console errors.
 - Compare the desktop and phone screenshots of the hero, top bar and footer with the last few sites in the ledger (their folders are siblings of this repo). If a stranger could mistake them for the same template, change the look until they couldn't.
+- Check Lenis in the browser: with normal motion `<html>` gets the `lenis` class and a mouse-wheel scroll glides; with reduced motion there's no `lenis` class and the wheel scrolls natively; clicking a nav link lands the section just below the sticky bar; and the page still scrolls with the Lenis script blocked.
 - Validate that the JSON-LD parses.
 - Check that no visible text contains an em dash (scroll-craft's rule), and no `.sc-*` engine file was edited (`diff` against `~/.claude/skills/scroll-craft/engine/`).
 - Search the new folder for any remaining `YourBrand`, `Ames` (unless the client is in Ames), `555-000`, `00000`, `Since 1998`, `4.9`, `Story County` (unless it applies), `estimate` (genre path, unless it applies), and `electric` (unless it applies).
