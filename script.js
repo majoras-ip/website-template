@@ -1,52 +1,47 @@
 // Mobile nav toggle
-const hamburger = document.getElementById('hamburger');
+const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+navToggle.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open);
 });
 
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
-
-// Contact form
-const form = document.getElementById('contact-form');
-const successMsg = document.getElementById('form-success');
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  successMsg.style.display = 'block';
-  form.reset();
-  setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
-});
-
-// FAQ accordion
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-    btn.setAttribute('aria-expanded', !isOpen);
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
   });
 });
 
-// CTA banner dismiss
-const ctaClose = document.getElementById('cta-close');
-const ctaBanner = ctaClose.closest('.cta-banner');
+// Estimate form (demo only: replace with a real form service before launch)
+const form = document.getElementById('estimate-form');
+const status = document.getElementById('form-status');
 
-ctaClose.addEventListener('click', () => {
-  ctaBanner.classList.add('hidden');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  status.textContent = "Request sent. We'll call you within one business day.";
+  form.reset();
 });
 
-// Back to top
-const backToTop = document.getElementById('back-to-top');
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
 
-window.addEventListener('scroll', () => {
-  backToTop.classList.toggle('visible', window.scrollY > 400);
-});
+// Scroll animations: one quiet fade-up per section, only if GSAP loaded
+// and the visitor hasn't asked for reduced motion. Content is fully
+// visible without JS, so a CDN failure never hides anything.
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
 
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.utils.toArray('[data-reveal]').forEach(el => {
+      gsap.from(el, {
+        autoAlpha: 0,
+        y: 24,
+        duration: 0.7,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+      });
+    });
+  });
+}

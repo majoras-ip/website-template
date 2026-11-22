@@ -3,283 +3,304 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Company Name</title>
+  <title>YourBrand | Licensed Electrician in Ames, IA</title>
+  <meta name="description" content="Licensed, insured electricians serving Ames and Story County. Panel upgrades, wiring, lighting, EV chargers and repairs. Free estimates. Call (555) 000-0000." />
+  <meta name="theme-color" content="#1F5642" />
+  <meta property="og:title" content="YourBrand | Licensed Electrician in Ames, IA" />
+  <meta property="og:description" content="Free estimates across Story County. Call (555) 000-0000." />
+  <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Local business info for Google. Keep in sync with the visible contact details. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Electrician",
+    "name": "YourBrand",
+    "telephone": "+1-555-000-0000",
+    "email": "hello@yourbrand.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Main St",
+      "addressLocality": "Ames",
+      "addressRegion": "IA",
+      "postalCode": "50010",
+      "addressCountry": "US"
+    },
+    "areaServed": ["Ames", "Ankeny", "Boone", "Nevada", "Huxley", "Story City", "Gilbert", "Slater"],
+    "openingHours": ["Mo-Fr 07:00-18:00", "Sa 08:00-12:00"]
+  }
+  </script>
 </head>
 <body>
 
-  <!-- ========== CTA BANNER ========== -->
-  <div class="cta-banner">
-    <span>Ready to get started? Call us today!</span>
-    <a href="tel:5550000000" class="cta-banner-link">(555) 000-0000</a>
-    <button class="cta-banner-close" id="cta-close" aria-label="Dismiss">&times;</button>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ========== CALL BAR (sticky, always visible) ========== -->
+  <a class="call-bar" href="tel:+15550000000">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span class="call-bar-label">Call for a free estimate</span>
+    <span class="call-bar-number">(555) 000-0000</span>
+  </a>
+
+  <!-- ========== HEADER + HERO ========== -->
+  <div class="masthead">
+    <header class="container nav">
+      <a href="#" class="logo">YourBrand</a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav class="nav-links" id="nav-links" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#work">Our work</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#area">Service area</a>
+        <a href="#estimate">Free estimate</a>
+      </nav>
+    </header>
+
+    <section class="container hero">
+      <div class="hero-text">
+        <h1>Licensed electricians for homes across Story County</h1>
+        <p>Panel upgrades, new circuits, lighting and repairs. We show up when we say we will, and we clean up before we leave.</p>
+        <div class="hero-actions">
+          <a href="tel:+15550000000" class="btn btn-call">Call (555) 000-0000</a>
+          <a href="#estimate" class="btn btn-ghost">Request an estimate</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <!-- Replace with a real photo of the crew, truck, or a finished job: <img src="images/hero.jpg" alt="..." width="800" height="1000"> -->
+        <div class="placeholder">Photo of the crew or truck</div>
+      </div>
+
+      <dl class="credentials">
+        <div><dt>License</dt><dd>#00000</dd></div>
+        <div><dt>Insurance</dt><dd>Fully insured</dd></div>
+        <div><dt>In business</dt><dd>Since 1998</dd></div>
+        <div><dt>Estimates</dt><dd>Always free</dd></div>
+      </dl>
+    </section>
   </div>
 
-  <!-- ========== NAVBAR ========== -->
-  <header class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="#" class="logo">YourBrand</a>
-      <nav class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+  <main id="main">
 
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>We Help Small Businesses <span class="accent">Grow</span></h1>
-      <p>Professional services tailored to your needs. Fast, reliable, and built to last.</p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-        <a href="#services" class="btn btn-outline">Our Services</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== LOGO BAR ========== -->
-  <section class="logo-bar">
-    <div class="container">
-      <p class="logo-bar-label">Trusted by local businesses</p>
-      <div class="logo-bar-grid">
-        <div class="logo-placeholder">Partner One</div>
-        <div class="logo-placeholder">Partner Two</div>
-        <div class="logo-placeholder">Partner Three</div>
-        <div class="logo-placeholder">Partner Four</div>
-        <div class="logo-placeholder">Partner Five</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== ABOUT ========== -->
-  <section class="about section" id="about">
-    <div class="container about-grid">
-      <div class="about-text">
-        <h2>About Us</h2>
-        <p>We're a small team passionate about helping local businesses succeed. With years of experience and a commitment to quality, we deliver results you can count on.</p>
-        <ul class="about-list">
-          <li>&#10003; Locally owned &amp; operated</li>
-          <li>&#10003; 100+ happy clients</li>
-          <li>&#10003; Fast turnaround times</li>
-          <li>&#10003; Satisfaction guaranteed</li>
+    <!-- ========== SERVICES ========== -->
+    <section class="section" id="services">
+      <div class="container" data-reveal>
+        <div class="section-head">
+          <h2>What we do</h2>
+          <p>Residential and light commercial work, all done to code with permits handled for you.</p>
+        </div>
+        <ul class="service-list">
+          <li>
+            <h3>Panel upgrades</h3>
+            <p>Replace old fuse boxes and undersized panels so your home can handle what you plug in.</p>
+          </li>
+          <li>
+            <h3>Outlets and circuits</h3>
+            <p>New outlets, dedicated circuits for appliances, and GFCI protection for kitchens and baths.</p>
+          </li>
+          <li>
+            <h3>Lighting</h3>
+            <p>Recessed lights, fixtures, ceiling fans, and outdoor and landscape lighting.</p>
+          </li>
+          <li>
+            <h3>EV chargers</h3>
+            <p>Level 2 charger installs, including any panel or circuit work the charger needs.</p>
+          </li>
+          <li>
+            <h3>Generators and surge protection</h3>
+            <p>Standby generator hookups and whole-home surge protectors.</p>
+          </li>
+          <li>
+            <h3>Troubleshooting and repairs</h3>
+            <p>Breakers that keep tripping, dead outlets, flickering lights. We find the cause and fix it.</p>
+          </li>
         </ul>
       </div>
-      <div class="about-image">
-        <div class="image-placeholder">Photo / Illustration</div>
+    </section>
+
+    <!-- ========== PROCESS (a real sequence, so it's numbered) ========== -->
+    <section class="section section-alt" id="process">
+      <div class="container" data-reveal>
+        <div class="section-head">
+          <h2>How a job works</h2>
+        </div>
+        <ol class="steps">
+          <li>
+            <h3>Call or send a request</h3>
+            <p>Tell us what's going on. If we miss you, we call back the same day.</p>
+          </li>
+          <li>
+            <h3>On-site estimate</h3>
+            <p>We look at the job and give you a written price before any work starts.</p>
+          </li>
+          <li>
+            <h3>The work</h3>
+            <p>Done on the day we schedule, to code, with permits and inspections handled.</p>
+          </li>
+          <li>
+            <h3>Walkthrough</h3>
+            <p>We show you what we did, answer questions, and leave the space clean.</p>
+          </li>
+        </ol>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== SERVICES ========== -->
-  <section class="services section" id="services">
-    <div class="container">
-      <h2 class="section-title">What We Offer</h2>
-      <div class="services-grid">
-
-        <div class="card">
-          <div class="card-icon">&#128187;</div>
-          <h3>Service One</h3>
-          <p>Short description of this service and the value it brings to your clients.</p>
+    <!-- ========== OUR WORK ========== -->
+    <section class="section" id="work">
+      <div class="container" data-reveal>
+        <div class="section-head">
+          <h2>Recent jobs</h2>
+          <p>A few projects from around the area.</p>
         </div>
-
-        <div class="card">
-          <div class="card-icon">&#128200;</div>
-          <h3>Service Two</h3>
-          <p>Short description of this service and the value it brings to your clients.</p>
+        <div class="work-grid">
+          <!-- Replace each .placeholder with <img src="images/job-1.jpg" alt="..." loading="lazy" width="800" height="600"> -->
+          <figure><div class="placeholder">Photo</div><figcaption>200-amp panel upgrade, Ames</figcaption></figure>
+          <figure><div class="placeholder">Photo</div><figcaption>Kitchen recessed lighting, Ankeny</figcaption></figure>
+          <figure><div class="placeholder">Photo</div><figcaption>EV charger install, Nevada</figcaption></figure>
+          <figure><div class="placeholder">Photo</div><figcaption>Basement rewire, Boone</figcaption></figure>
+          <figure><div class="placeholder">Photo</div><figcaption>Generator hookup, Huxley</figcaption></figure>
+          <figure><div class="placeholder">Photo</div><figcaption>Outdoor lighting, Story City</figcaption></figure>
         </div>
-
-        <div class="card">
-          <div class="card-icon">&#128101;</div>
-          <h3>Service Three</h3>
-          <p>Short description of this service and the value it brings to your clients.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">&#128204;</div>
-          <h3>Service Four</h3>
-          <p>Short description of this service and the value it brings to your clients.</p>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== GALLERY ========== -->
-  <section class="gallery section" id="gallery">
-    <div class="container">
-      <h2 class="section-title">Our Work</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item"><div class="gallery-placeholder">Photo 1</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">Photo 2</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">Photo 3</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">Photo 4</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">Photo 5</div></div>
-        <div class="gallery-item"><div class="gallery-placeholder">Photo 6</div></div>
+    <!-- ========== REVIEWS ========== -->
+    <!-- PLACEHOLDER REVIEWS. Replace with the client's real Google reviews before launch. Never publish made-up reviews. -->
+    <section class="section section-alt" id="reviews">
+      <div class="container reviews" data-reveal>
+        <div class="rating">
+          <h2>What customers say</h2>
+          <p class="rating-score"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 out of 5</p>
+          <p>From 120+ reviews on Google</p>
+          <a class="text-link" href="#">Read all reviews on Google</a>
+        </div>
+        <div class="quotes">
+          <blockquote>
+            <p>"They gave us a clear price up front, finished the panel swap in one day, and the inspector passed it the first time."</p>
+            <footer>Jane D., Ames <span>Panel upgrade</span></footer>
+          </blockquote>
+          <blockquote>
+            <p>"Called on a Monday about a breaker that kept tripping. Fixed by Tuesday afternoon."</p>
+            <footer>Mike S., Ankeny <span>Repair</span></footer>
+          </blockquote>
+          <blockquote>
+            <p>"Friendly crew, wore shoe covers the whole time, and cleaned up better than we would have."</p>
+            <footer>Amy L., Nevada <span>Lighting</span></footer>
+          </blockquote>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== TESTIMONIALS ========== -->
-  <section class="testimonials section" id="testimonials">
-    <div class="container">
-      <h2 class="section-title">What Clients Say</h2>
-      <div class="testimonials-grid">
-
-        <div class="testimonial-card">
-          <p>"Working with this team was a great experience. They delivered exactly what we needed on time and within budget."</p>
-          <div class="testimonial-author">
-            <div class="avatar">JD</div>
-            <div>
-              <strong>Jane Doe</strong>
-              <span>Owner, Doe's Bakery</span>
-            </div>
+    <!-- ========== SERVICE AREA + HOURS ========== -->
+    <section class="section" id="area">
+      <div class="container" data-reveal>
+        <div class="area-grid">
+          <div>
+            <h2>Where we work</h2>
+            <p>Based in Ames and serving all of Story County, plus nearby towns.</p>
+            <ul class="towns">
+              <li>Ames</li><li>Ankeny</li><li>Boone</li><li>Nevada</li>
+              <li>Huxley</li><li>Story City</li><li>Gilbert</li><li>Slater</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Hours</h3>
+            <table class="hours">
+              <tr><th scope="row">Monday to Friday</th><td>7:00 AM to 6:00 PM</td></tr>
+              <tr><th scope="row">Saturday</th><td>8:00 AM to noon</td></tr>
+              <tr><th scope="row">Sunday</th><td>Emergencies only</td></tr>
+            </table>
+            <address>
+              123 Main St, Ames, IA 50010<br />
+              <a href="tel:+15550000000">(555) 000-0000</a><br />
+              <a href="mailto:hello@yourbrand.com">hello@yourbrand.com</a>
+            </address>
           </div>
         </div>
-
-        <div class="testimonial-card">
-          <p>"Professional, responsive, and genuinely cared about our business. Highly recommend to anyone looking for quality service."</p>
-          <div class="testimonial-author">
-            <div class="avatar">MS</div>
-            <div>
-              <strong>Mike Smith</strong>
-              <span>CEO, Smith Auto</span>
-            </div>
-          </div>
+        <!-- Replace src with the client's embed URL (Google Maps → Share → Embed a map) -->
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps?q=Ames,+IA&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map of our service area"></iframe>
         </div>
-
-        <div class="testimonial-card">
-          <p>"They transformed our online presence completely. We've seen a noticeable increase in new customers since working with them."</p>
-          <div class="testimonial-author">
-            <div class="avatar">AL</div>
-            <div>
-              <strong>Amy Lee</strong>
-              <span>Manager, Lee Fitness</span>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== FAQ ========== -->
-  <section class="faq section" id="faq">
-    <div class="container">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq-list">
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            How long does it take to get started?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We typically get back to new clients within 24 hours and can begin work within a week of signing the agreement.</p>
-          </div>
+    <!-- ========== FAQ ========== -->
+    <section class="section section-alt" id="faq">
+      <div class="container faq" data-reveal>
+        <h2>Common questions</h2>
+        <div class="faq-list">
+          <details>
+            <summary>Do you charge for estimates?</summary>
+            <p>No. We come out, look at the job, and give you a written price at no cost.</p>
+          </details>
+          <details>
+            <summary>Are you licensed and insured?</summary>
+            <p>Yes. We hold Iowa electrical license #00000 and carry full liability and workers' comp insurance. We can send proof on request.</p>
+          </details>
+          <details>
+            <summary>Do you take emergency calls?</summary>
+            <p>Yes. For a loss of power, burning smell, or sparking outlet, call (555) 000-0000 any time, including weekends.</p>
+          </details>
+          <details>
+            <summary>How soon can you come out?</summary>
+            <p>Most estimates happen within a few days of your call. Repairs are often same day or next day.</p>
+          </details>
+          <details>
+            <summary>How do I pay?</summary>
+            <p>We take cash, check, and all major cards. Payment is due when the job is finished and you're happy with it.</p>
+          </details>
         </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            What areas do you serve?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We serve the greater [City] area and surrounding communities. Contact us to find out if we cover your location.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Do you offer payment plans?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes! We offer flexible payment options to fit your budget. Ask us about our plans when you get in touch.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            What happens after I submit the contact form?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>A team member will reach out within 24 hours to schedule a free consultation and discuss your needs.</p>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== CONTACT + MAP ========== -->
-  <section class="contact section" id="contact">
-    <div class="container contact-grid">
-      <div class="contact-info">
-        <h2>Get in Touch</h2>
-        <p>Ready to get started? Fill out the form and we'll be in touch within 24 hours.</p>
-        <ul class="contact-details">
-          <li>&#128205; 123 Main St, Your City, ST 00000</li>
-          <li>&#128222; (555) 000-0000</li>
-          <li>&#9993;&#65039; hello@yourbrand.com</li>
-        </ul>
-        <ul class="business-hours">
-          <li><strong>Mon – Fri</strong><span>9:00 AM – 6:00 PM</span></li>
-          <li><strong>Saturday</strong><span>10:00 AM – 4:00 PM</span></li>
-          <li><strong>Sunday</strong><span>Closed</span></li>
-        </ul>
+    <!-- ========== ESTIMATE FORM ========== -->
+    <section class="section" id="estimate">
+      <div class="container estimate" data-reveal>
+        <div class="estimate-text">
+          <h2>Get a free estimate</h2>
+          <p>Send us a few details and we'll call you within one business day.</p>
+          <p class="estimate-call">Rather talk now?<br /><a href="tel:+15550000000" class="btn btn-call">Call (555) 000-0000</a></p>
+        </div>
+        <!-- Hook this up to a form service (e.g. Formspree) before launch: set action="..." and method="POST", then remove the demo handler in script.js. -->
+        <form class="estimate-form" id="estimate-form">
+          <label>Name<input type="text" name="name" autocomplete="name" required /></label>
+          <label>Phone<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required /></label>
+          <label>Town or address<input type="text" name="address" autocomplete="street-address" /></label>
+          <label>What do you need done?<textarea name="message" rows="4" required></textarea></label>
+          <button type="submit" class="btn btn-primary">Request my estimate</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
       </div>
-      <form class="contact-form" id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <input type="text" name="subject" placeholder="Subject" />
-        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-        <p class="form-success" id="form-success">Thanks! We'll be in touch soon.</p>
-      </form>
-    </div>
+    </section>
 
-    <!-- Replace the src URL below with the client's Google Maps embed URL -->
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976397304903!3d40.69766374865766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1234567890"
-        width="100%"
-        height="350"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Our location">
-      </iframe>
-    </div>
-  </section>
+  </main>
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <span>&copy; 2026 YourBrand. All rights reserved.</span>
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
+      <div>
+        <p class="logo">YourBrand</p>
+        <p>Licensed electrician #00000. Fully insured.</p>
       </div>
+      <div>
+        <p><a href="tel:+15550000000">(555) 000-0000</a></p>
+        <p>123 Main St, Ames, IA 50010</p>
+      </div>
+      <p class="footer-small">&copy; <span id="year">2026</span> YourBrand</p>
     </div>
   </footer>
 
-  <!-- ========== BACK TO TOP ========== -->
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
-
-  <script src="script.js"></script>
+  <!-- GSAP + ScrollTrigger from cdnjs. Deferred so they never block the first paint. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

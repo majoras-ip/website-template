@@ -3,48 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Not Found — YourBrand</title>
+  <title>Page not found | YourBrand</title>
+  <meta name="theme-color" content="#1F5642" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
     .not-found {
-      min-height: 100vh;
+      min-height: calc(100vh - var(--call-bar-h));
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 40px 24px;
-      background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+      gap: 20px;
+      padding-top: 48px;
+      padding-bottom: 48px;
     }
-    .not-found-code {
-      font-size: clamp(5rem, 20vw, 9rem);
-      font-weight: 700;
-      color: var(--color-primary);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-    .not-found h2 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .not-found p {
-      color: var(--color-text-muted);
-      max-width: 400px;
-      margin: 0 auto 32px;
-    }
+    .not-found h1 { font-size: clamp(2.75rem, 7vw, 4.75rem); }
+    .not-found p { color: rgba(255, 255, 255, 0.86); font-size: 1.25rem; }
+    .not-found .hero-actions { margin-top: 8px; }
   </style>
 </head>
 <body>
-  <div class="not-found">
-    <div class="not-found-code">404</div>
-    <h2>Page Not Found</h2>
-    <p>Sorry, we couldn't find the page you were looking for. It may have been moved or deleted.</p>
-    <a href="index.html" class="btn btn-primary">Back to Home</a>
+  <a class="call-bar" href="tel:+15550000000">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span class="call-bar-label">Call for a free estimate</span>
+    <span class="call-bar-number">(555) 000-0000</span>
+  </a>
+  <div class="masthead">
+    <main class="container not-found">
+      <h1>That page doesn't exist</h1>
+      <p>The link may be old or mistyped. Head back to the home page, or call us and we'll help directly.</p>
+      <div class="hero-actions">
+        <a href="index.html" class="btn btn-ghost">Go to the home page</a>
+      </div>
+    </main>
   </div>
 </body>
 </html>
